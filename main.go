@@ -12,8 +12,8 @@ type TestStruct struct {
 }
 
 func main() {
-	Controllers.GormDb()
-	Controllers.FetchDb()
+	// Controllers.GormDb()
+	// Controllers.FetchDb()
 	Controllers.ChannelsInGo()
 	Tasks.SetKraData()
 
