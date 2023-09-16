@@ -1,6 +1,7 @@
 package main
 
 import (
+	"net/http"
 	"root/Controllers"
 	"root/Tasks"
 
@@ -14,8 +15,10 @@ type TestStruct struct {
 func main() {
 	// Controllers.GormDb()
 	// Controllers.FetchDb()
+	// http.HandleFunc("/", Controllers.HelloHandler)
+
 	Controllers.ChannelsInGo()
-	Tasks.SetKraData()
+	// Tasks.SetKraData()
 
 	//Redis connection
 	redisCli := asynq.RedisClientOpt{
@@ -34,5 +37,6 @@ func main() {
 	mux := asynq.NewServeMux()
 	mux.HandleFunc(Tasks.TypeAbc, Tasks.ABC)
 	worker.Run(mux)
+	http.ListenAndServe(":9090", nil)
 
 }
